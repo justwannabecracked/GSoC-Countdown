@@ -12,8 +12,8 @@ const audioRef = ref(null);
 const audioSrc = "/country-roads.mp3";
 
 function updateCountdown() {
-  const now = new Date();
-  const diff = targetDate - now;
+  const now = Date.now();
+  const diff = targetDate.getTime() - now;
 
   if (diff <= 0) {
     isComplete.value = true;
@@ -65,8 +65,6 @@ function playMusic() {
 
 function toggleDarkMode() {
   darkMode.value = !darkMode.value;
-  // // Optionally unmute music on user interaction
-  // playMusic();
 }
 
 onMounted(() => {
